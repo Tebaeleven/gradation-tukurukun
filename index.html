@@ -19,15 +19,15 @@
 
     <div class="container-xl">
         <canvas id="cv"></canvas>
+
         <form>
             <input type="button" value="色変更" onclick="chgCol()">
             <input type="button" value="画像に変換" onclick="chgImg()">
         </form>
+
         <input type="text" id="1" value="" readonly>
         <input type="text" id="2" value="" readonly>
-        <div class="img">
 
-        </div>
         <img id="newImg">
     </div>
 
@@ -35,7 +35,7 @@
 
         width=1920
         height=1280
-        
+
         var cvs = document.getElementById("cv");
         cvs.setAttribute( "width" , 1920 );
         cvs.setAttribute( "height" , 1280 );
@@ -46,22 +46,28 @@
         chgCol()
         //グラデーションの色と配分を指定
         function chgCol(){
+
             var r = Math.floor(Math.random()*256);
             var g = Math.floor(Math.random()*256);
             var b = Math.floor(Math.random()*256);
+
             var r1 = Math.floor(Math.random()*256);
             var g1 = Math.floor(Math.random()*256);
             var b1 = Math.floor(Math.random()*256);
+
             console.clear()
             console.log("rgb(" + r + "," + g + "," + b + ")")
             console.log("rgb(" + r1 + "," + g1 + "," + b1 + ")")
             grd.addColorStop(0,"rgb(" + r + "," + g + "," + b + ")");
             grd.addColorStop(1,"rgb(" + r1 + "," + g1 + "," + b1 + ")");
+
             //fillStyleにグラデーション配色を指定し、矩形で塗り潰す
             ctx.fillStyle = grd;
             ctx.fillRect(0,0,width,height);
+            //HTMLを書き換え
             var input1=document.getElementById("1")
             var input2=document.getElementById("2")
+
             input1.value=r +","+ g +","+b
             input2.value=r1 +","+ g1 +","+b1
             
