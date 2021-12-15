@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>グラデーション作るくん</title>
+  <meta charset="utf-8" />
+    <!-- reset.css modern-css-reset -->
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/modern-css-reset/dist/reset.min.css"
+    />
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body >
+    <div class="top">
+        <a href=""><h1>グラデーション作るくん</h1></a>
+    </div>
+
+    <div class="container-xl">
+        <canvas id="cv"></canvas>
+        <form>
+            <input type="button" value="色変更" onclick="chgCol()">
+            <input type="button" value="画像に変換" onclick="chgImg()">
+        </form>
+        <input type="text" id="1" value="" readonly>
+        <input type="text" id="2" value="" readonly>
+        <div class="img">
+
+        </div>
+        <img id="newImg">
+    </div>
+
+    <script>
+
+        width=1920
+        height=1280
+        
+        var cvs = document.getElementById("cv");
+        cvs.setAttribute( "width" , 1920 );
+        cvs.setAttribute( "height" , 1280 );
+        var ctx = document.getElementById("cv").getContext("2d");
+
+        //線形グラデーション領域の指定
+        var grd = ctx.createLinearGradient(0,0,width,height);
+        chgCol()
+        //グラデーションの色と配分を指定
+        function chgCol(){
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            var r1 = Math.floor(Math.random()*256);
+            var g1 = Math.floor(Math.random()*256);
+            var b1 = Math.floor(Math.random()*256);
+            console.clear()
+            console.log("rgb(" + r + "," + g + "," + b + ")")
+            console.log("rgb(" + r1 + "," + g1 + "," + b1 + ")")
+            grd.addColorStop(0,"rgb(" + r + "," + g + "," + b + ")");
+            grd.addColorStop(1,"rgb(" + r1 + "," + g1 + "," + b1 + ")");
+            //fillStyleにグラデーション配色を指定し、矩形で塗り潰す
+            ctx.fillStyle = grd;
+            ctx.fillRect(0,0,width,height);
+            var input1=document.getElementById("1")
+            var input2=document.getElementById("2")
+            input1.value=r +","+ g +","+b
+            input2.value=r1 +","+ g1 +","+b1
+            
+        }
+
+        function chgImg()
+        {
+        var png = cvs.toDataURL();
+        document.getElementById("newImg").src = png;
+        }
+        chgImg()
+    </script>
+</body>
+</html>
