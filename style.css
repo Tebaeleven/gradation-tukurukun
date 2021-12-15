@@ -8,8 +8,8 @@
 }
 .container-xl img{
     margin: auto;
-
 }
+
 input{
     margin-bottom: 5px;
 }
@@ -24,16 +24,21 @@ input{
     display: flex;
     align-items: center;
     
-    
 }
+
 a{
     text-decoration: none;
     color: #000;
 }
+
 canvas{
     width: 35%;
 }
+
 #newImg{
     width: 20%;
     height: auto;
+}
+#download{
+    margin-bottom: 1%;
 }

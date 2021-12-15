@@ -27,18 +27,18 @@
 
         <input type="text" id="1" value="" readonly>
         <input type="text" id="2" value="" readonly>
-
+        <button id="download">download</button>
         <img id="newImg">
     </div>
 
     <script>
 
         width=1920
-        height=1280
+        height=1080
 
         var cvs = document.getElementById("cv");
         cvs.setAttribute( "width" , 1920 );
-        cvs.setAttribute( "height" , 1280 );
+        cvs.setAttribute( "height" , 1080 );
         var ctx = document.getElementById("cv").getContext("2d");
 
         //線形グラデーション領域の指定
@@ -79,6 +79,16 @@
         document.getElementById("newImg").src = png;
         }
         chgImg()
+
+
+        document.getElementById("download").onclick=(event)=>{
+          let canvas=document.getElementById("cv");
+
+          let link=document.createElement("a");
+          link.href=canvas.toDataURL("image/png");
+          link.download="gradation.png";
+          link.click();
+        }
     </script>
 </body>
 </html>
