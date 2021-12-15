@@ -41,11 +41,12 @@
         cvs.setAttribute( "height" , 1080 );
         var ctx = document.getElementById("cv").getContext("2d");
 
-        //線形グラデーション領域の指定
-        var grd = ctx.createLinearGradient(0,0,width,height);
         chgCol()
         //グラデーションの色と配分を指定
         function chgCol(){
+
+            //線形グラデーション領域の指定
+            var grd = ctx.createLinearGradient(0,0,width,height);
 
             var r = Math.floor(Math.random()*256);
             var g = Math.floor(Math.random()*256);
